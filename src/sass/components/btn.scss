@@ -2,12 +2,45 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 12em;
-
+  
   padding: 1rem .5rem;
+  min-width: 12em;
+  border-radius: .65rem;
+  border: none;
+  
+  font-size: 2.2rem;
+  color: white;
   font-weight: bold;
 
-  color: #ffffff;
-  border-radius: 5px;
-  border: none;
+  transition: all 0.3s ease-out;
+
+  &--active {
+    background-color: #f5c400;
+    color: black;
+
+    &:hover,
+    &:focus {
+      background-color: lighten(#f5c400, 10);
+    }
+  }
+
+  &--price {
+    background-color: inherit;
+    border: 0.1em solid white;
+
+    &:hover {
+      background-color: white;
+      color: var(--secondary-color);
+    }
+  }
+
+  &--reversed {
+    background-color: inherit;
+    border: 0.1em solid white;
+    
+    &:hover {
+      color: var(--secondary-color);
+      background-color: white;
+    }
+  }
 }

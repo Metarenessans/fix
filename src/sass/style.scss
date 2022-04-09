@@ -2,10 +2,11 @@
 @import "common";
 
 /* Components */
-@import "./components/btn.scss";
+@import "./components/btn";
+@import "./components/modal";
+@import "./components/form";
 
 /* Sections */
-@import "./sections/popup";
 @import "./sections/section1";
 @import "./sections/section2";
 @import "./sections/section3";

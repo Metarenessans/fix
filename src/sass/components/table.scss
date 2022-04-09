@@ -1,0 +1,41 @@
+.table {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 1rem;
+
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    width: 100%;
+    border-bottom: #c4c4c4 2px solid;
+
+    font-size: 2em;
+
+    &:first-child {
+      font-size: 1.7em;
+    }
+    
+    div {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: (100% / 3);
+
+      line-height: 4rem;
+
+      @include sm {
+        width: 25%;
+      }
+
+      &:nth-child(1) {
+        @include sm {
+          width: 50%;
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import 'wicg-inert';
+
 console.log('It works!');
 
 function scrollToElement(selector, callback) {
@@ -11,23 +14,21 @@ $('a[href^="#"]').click(function (e) {
   scrollToElement($(this).attr('href'));
 });
 
-let initiator = document.getElementsByClassName('js-popup');
-let popup     = document.getElementById('popup');
-let main      = document.getElementById('main');
+const modal = document.querySelector('#modal');
+const main  = document.querySelector('main');
 
-for (let item of initiator) {
-  item.addEventListener('click', () => {
-    popup.classList.add("popup--active"); 
-    main.classList.add("block-events"); 
+[...document.querySelectorAll('.js-modal')].forEach(element => {
+  element.addEventListener('click', () => {
+    modal.classList.add('modal--visible');
+    main.inert = true; 
+    document.body.classList.add('scroll-disabled');
   });
-}
+});
 
-console.log('initiator',initiator);
-
-popup.addEventListener('click', e => {
-  let classList = e.target.classList;
-  if (classList.contains('popup--active')) {
-    popup.classList.remove("popup--active");
-    main.classList.remove("block-events");
+modal.addEventListener('click', e => {
+  if (e.target.classList.contains('modal--visible')) {
+    modal.classList.remove('modal--visible');
+    main.inert = false;
+    document.body.classList.remove('scroll-disabled');
   }
 });

@@ -1,22 +1,36 @@
 body {
-  font-family: 'Roboto',Arial,sans-serif;
+  font-family: "Roboto", "Arial", sans-serif;
   font-size: 1.6rem;
   color: var(--primary-color);
+
+  &.scroll-disabled {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+  }
 }
 
 main {
   overflow: hidden;
+
+  &[inert] {
+    height: 100%;
+    overflow: hidden;
+  }
 }
 
-.section-header {
-  margin: 0;
-  margin-bottom: 2.4rem;
+.section {
+  padding: 5em 0;
+
+  &__title {
+    margin: 0;
+    margin-bottom: 3rem;
   
-  font-family: "Giorgio Sans LCG", sans-serif;
-  font-size: 6.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-align: center;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 4rem;
+  }
 }
 
 .sm-only {

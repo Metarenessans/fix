@@ -1,56 +1,85 @@
 const gulp = require('gulp');
-const sass = require('gulp-sass');
+const del = require('del');
 const sourcemaps = require('gulp-sourcemaps');
-const minifyCSS = require('gulp-csso');
-const autoprefixer = require('gulp-autoprefixer');
-const postcss = require('gulp-postcss');
-const babel = require('gulp-babel');
-const uglify = require('gulp-uglify');
-const concat = require('gulp-concat');
-
-const sync = require('browser-sync').create();
-
-// HTML
-
-const html = () => {
-  return gulp.src("src/*.html")
-    .pipe(gulp.dest("./public"))
-    .pipe(sync.stream())
-};
 
 // CSS
 
-const css = () => {
-  return gulp.src('src/sass/main.s[ac]ss')
-    .pipe(sass({ outputStyle: 'expanded' }))
-    .pipe(postcss([
-      require('postcss-custom-properties')()
-    ]))
-    .pipe(autoprefixer({
-      overrideBrowserslist: ['last 4 versions']
-    }))
-    // .pipe(minifyCSS())
-    .pipe(gulp.dest('public/css'))
-    .pipe(sync.stream({ match: '**/*.css' }))
-};
+const sass = require('gulp-sass')(require('sass'));
+const postcss = require('gulp-postcss');
 
 // JS
 
-const js = () => {
-  return gulp.src('src/js/index.js')
-    .pipe(babel())
-    // .pipe(uglify())
-    .pipe(concat('index.js'))
+const webpack = require('webpack-stream');
+const babel = require('gulp-babel');
+
+const sync = require('browser-sync');
+
+// HTML
+
+const html = () =>
+  gulp.src('src/*.html')
+    .pipe(gulp.dest('public'))
+    .pipe(sync.stream());
+
+// CSS
+
+const css = () =>
+  gulp.src('src/sass/style.s[ac]ss')
+    .pipe(sourcemaps.init())
+    .pipe(sass({ outputStyle: 'expanded' }))
+    .pipe(postcss([
+      require('postcss-custom-properties')(),
+      require('autoprefixer')()
+    ]))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('public/css'))
+    .pipe(sync.stream());
+
+// JS
+
+const js = () =>
+  gulp.src('src/js/index.js')
+    .pipe(webpack({
+      mode: 'production',
+      devtool: 'source-map',
+      entry: './src/js/index.js',
+      output: {
+        filename: 'index.js'
+      }
+    }))
     .pipe(gulp.dest('public/js'))
-    .pipe(sync.stream())
-};
+    .pipe(sync.stream());
+
+// Clean
+
+const clean = () =>
+  del([
+    'public/lib/**',
+    'public/img/**',
+    'public/fonts/**'
+  ]);
+
+// Copy
+
+const copy = () => 
+  gulp.src([
+    'src/lib/**',
+    'src/img/**',  
+    'src/fonts/**'  
+  ], { base: 'src' })
+    .pipe(gulp.dest('public'))
+    .pipe(sync.stream());
 
 // Watch
 
 const watch = () => {
-  gulp.watch("src/*.html",  gulp.series(html));
-  gulp.watch("src/sass/**", gulp.series(css));
-  gulp.watch("src/js/**",   gulp.series(js));
+  gulp.watch('src/*.html',  gulp.series(html));
+  gulp.watch('src/sass/**', gulp.series(css));
+  gulp.watch('src/js/**',   gulp.series(js));
+  gulp.watch([
+    'src/img/**',
+    'src/fonts/**'
+  ], gulp.series(clean, copy));
 };
 
 // Server
@@ -58,23 +87,16 @@ const watch = () => {
 const server = () => {
   sync.init({
     server: {
-      baseDir: "./public"
+      baseDir: './public'
     },
     ui: false,
     notify: false
   });
 };
 
-// Default
+// Default task
 
 exports.default = gulp.series(
-  gulp.parallel(
-    html,
-    css,
-    js
-  ),
-  gulp.parallel(
-    watch,
-    server
-  )
+  gulp.parallel(html, css, js, clean, copy),
+  gulp.parallel(watch, server)
 );
