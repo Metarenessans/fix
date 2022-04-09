@@ -153,11 +153,12 @@
   </main>
 
   <div id="modal" class="modal">
-    <form class="form" action="google-sheets.php">
+    <form class="form" action="google-sheets.php" method="get">
       <h2 class="form__title">Вызов мастера</h2>
       <div class="form__inputs">
         <input type="text" name="name" placeholder="Имя">
         <input type="tel"  name="tel"  placeholder="Телефон">
+        <textarea name="description" cols="30" rows="10"></textarea>
       </div>
   
       <button class="btn btn--active form__btn" type="submit">Отправить</button>

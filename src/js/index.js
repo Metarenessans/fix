@@ -32,3 +32,22 @@ modal.addEventListener('click', e => {
     document.body.classList.remove('scroll-disabled');
   }
 });
+
+$('form').on('submit', e => {
+  e.preventDefault();
+  const data = {
+    tel:  $('input[name="tel"]').val(),
+    name: $('input[name="name"]').val()
+  };
+  $.ajax({
+    type: 'GET',
+    url: 'google-sheets.php',
+    data,
+    success: message => {
+      console.log(message);
+    },
+    error: error => {
+      console.error(error);
+    }
+  });
+});

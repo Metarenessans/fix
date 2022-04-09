@@ -5,8 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#fff">
+
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+
   <title>Ремонт стиральных машин в Набережных Челнах</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=<?= time(); ?>">
 </head>
 <body>
   <main>
@@ -158,7 +163,6 @@
       <div class="form__inputs">
         <input type="text" name="name" placeholder="Имя">
         <input type="tel"  name="tel"  placeholder="Телефон">
-        <textarea name="description" cols="30" rows="10"></textarea>
       </div>
   
       <button class="btn btn--active form__btn" type="submit">Отправить</button>
@@ -170,6 +174,6 @@
     </form>
   </div>
   
-  <script src="js/index.js"></script>
+  <script src="js/index.js?v=<?= time(); ?>"></script>
 </body>
 </html>
