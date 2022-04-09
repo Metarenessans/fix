@@ -1,0 +1,104 @@
+.section2 {
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items:     center;
+  flex-direction:  column;
+  padding-top: 5em;
+
+  color: #fff;
+  background-color: #202020;
+  backdrop-filter: blur(2px);
+
+ .title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+    
+    p {
+      text-align: center;
+      font-size: 4rem;
+      font-weight: 600;
+      line-height: 4rem;
+    }
+  }
+
+  .price-table {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    &:first-child {
+      font-size: 1em;
+    }
+
+    .row {
+      font-size: 2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      width: 100%;
+      border-bottom: #c4c4c4 2px solid;
+
+      &:first-child {
+        font-size: 1.7em;
+      }
+
+      div:first-of-type {
+        justify-content: flex-start;
+      }
+
+      div {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 33.33%;
+
+        line-height: 4rem;
+
+        &:nth-child(1) {
+          @include sm {
+            width: 50%;
+          }
+        }
+        &:nth-child(2) {
+          @include sm {
+            width: 25%;
+          }
+        }
+        &:nth-child(3) {
+          @include sm {
+            width: 25%;
+          }
+        }
+      }
+    }
+  }
+
+  &__button-container {
+    display: flex;
+    justify-content: center;
+    align-items:     center;
+
+    padding:    5em;
+    margin-top: 1em;
+
+    button {
+      font-size: 2em;
+
+      background-color: inherit;
+      border: 2px solid #ffffff;
+      backdrop-filter: blur(6px);
+      border-radius: 0;
+      width: auto;
+
+      &:hover {
+        color: #202020;
+        background-color: white;
+      }
+    }
+  }
+}
