@@ -14,6 +14,17 @@
 
   transition: all 0.3s ease-out;
 
+  &:disabled {
+    opacity: .9;
+    background-color: aliceblue;
+    cursor: not-allowed;
+    
+    &:hover,
+    &:focus {
+      background-color: aliceblue;
+    }
+  }
+
   &--active {
     background-color: #f5c400;
     color: black;

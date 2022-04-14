@@ -1,7 +1,10 @@
 import $ from 'jquery';
+import 'jquery.maskedinput/src/jquery.maskedinput';
 import 'wicg-inert';
 
 console.log('It works!');
+
+$('[type="tel"]').mask('+7 (999) 999-9999');
 
 function scrollToElement(selector, callback) {
   $('html').animate({
@@ -17,11 +20,13 @@ $('a[href^="#"]').click(function (e) {
 const modal = document.querySelector('#modal');
 const main  = document.querySelector('main');
 
+// Открытие модального окна
 [...document.querySelectorAll('.js-modal')].forEach(element => {
   element.addEventListener('click', () => {
     modal.classList.add('modal--visible');
     main.inert = true; 
     document.body.classList.add('scroll-disabled');
+    resetForm();
   });
 });
 
@@ -33,18 +38,51 @@ modal.addEventListener('click', e => {
   }
 });
 
+function resetForm() {
+  const button = $('button[type="submit"]');
+  button.text('Отправить');
+  button.prop('disabled', '');
+}
+
 $('form').on('submit', e => {
   e.preventDefault();
-  const data = {
-    tel:  $('input[name="tel"]').val(),
-    name: $('input[name="name"]').val()
-  };
+
+  // Валидация
+  let valid = true;
+
+  const telInput = $('input[name="tel"]');
+  const tel = telInput.val();
+  if (tel.length === 0) {
+    valid = false;
+    telInput.attr('placeholder', 'Укажите телефон');
+    telInput.addClass('error');
+  }
+
+  const nameInput = $('input[name="name"]');
+  const name = nameInput.val();
+  if (name.length === 0) {
+    valid = false;
+    nameInput.attr('placeholder', 'Укажите свое имя');
+    nameInput.addClass('error');
+  }
+
+  if (!valid) {
+    return;
+  }
+
+  nameInput.removeClass('error');
+  telInput.removeClass('error');
+
+  const data = { name, tel };
   $.ajax({
     type: 'GET',
     url: 'google-sheets.php',
     data,
     success: message => {
       console.log(message);
+      $('button[type="submit"]')
+        .text('Спасибо! Мы скоро с вами свяжемся')
+        .prop('disabled', 'true');
     },
     error: error => {
       console.error(error);

@@ -10,6 +10,8 @@
 
   font-size: 2rem;
 
+  cursor: initial;
+
   @include sm {
     font-size: 3rem;
     width: 90%;
@@ -42,9 +44,25 @@
       border-bottom-color: #c4c4c4;
       padding: .25em;
 
-      color: #fff;
+      color: white;
       
       font-size: 1.2em;
+
+      &.error {
+        border-color: red;
+        border-radius: .25em;
+
+        &::placeholder {
+          // color: red;
+        }
+      }
+
+      &:-webkit-autofill {
+        -webkit-text-fill-color: white !important;
+        -webkit-box-shadow: 0 0 0 30px #112944 inset !important;
+        border: #112944 .1em solid;
+        border-bottom-color: #c4c4c4;
+      }
       
       &:hover {
         border-bottom-color: white;
@@ -59,7 +77,7 @@
         display: flex;
         align-items: center;
         font-size: .8em;
-        color: #fff;
+        color: white;
         opacity: 0.7;
       }
     }
