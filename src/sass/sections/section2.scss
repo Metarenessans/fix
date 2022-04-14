@@ -2,12 +2,17 @@
 
 .section2 {
   background-color: var(--secondary-color);
+  padding: 10rem 5rem 15rem;
+
+  @include sm {
+    padding: 10rem 2.1rem 15rem;
+  }
 
   &__buttons {
     display: flex;
     justify-content: center;
     align-items:     center;
 
-    margin-top: 6rem;
+    margin-top: 10rem;
   }
 }

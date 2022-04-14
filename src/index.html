@@ -133,14 +133,14 @@
             </p>
           </div>
           <div class="about-us__item">
-            <h3>Гарантия на ремонт</h3>
+            <h3>Гарантия на ремонт.</h3>
             <p>
               Даем официальную гарантию<br>
               до 1 года.
             </p>
           </div>
           <div class="about-us__item">
-            <h3>Оплата за результат</h3>
+            <h3>Оплата за результат.</h3>
             <p>
               Оплата происходит<br>
               после окончания всех работ<br>
@@ -157,7 +157,10 @@
       <h2 class="form__title">Вызов мастера</h2>
       <div class="form__inputs">
         <input type="text" name="name" placeholder="Имя">
-        <input type="tel"  name="tel"  placeholder="Телефон">
+        <label>
+          <span>Номер телефона *</span>
+          <input type="tel" required>
+        </label>
       </div>
   
       <button class="btn btn--active form__btn" type="submit">Отправить</button>
@@ -170,5 +173,6 @@
   </div>
   
   <script src="js/index.js"></script>
+  <script src="lib/jquery/jquery.maskedinput.min.js"></script>
 </body>
 </html>
