@@ -1,28 +1,38 @@
 .section1 {
-  padding: 25rem 0 27rem;
+  padding: 30.3rem 0 8.5rem;
 
   display: flex;
   justify-content: flex-start;
   align-items: center;
 
-  background: linear-gradient(150deg, #347d8a -22%, #636373 -16%, #00d4ff 93%);
-  background-color: #00d4ff;
+  // background: linear-gradient(150deg, #347d8a -22%, #636373 -16%, #00d4ff 93%);
+  // background-color: #00d4ff;
+  background: 
+    linear-gradient(67.84deg, rgba(0, 10, 30, 0.5) 0%, rgba(30, 10, 0, 0) 100%),
+    url(../img/hero.jpg) no-repeat center -3.85rem / cover;
+
+  
+  font-family: "LogoPixies", "Arial", sans-serif;
+
+  &__inner {
+    padding: 0 3.5rem;
+  }
 
   &__title {
     margin:  0;
 
-    font-family: "Arial", sans-serif;
-    font-size: 6rem;
-    font-weight: 900;
-    line-height: 1.2;
+    font-size: 8rem;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 8rem;
   }
 
   &__buttons {
     display: flex;
-    margin-top: 2em;
+    margin-top: 3rem;
 
     > * + * {
-      margin-left: 1em;
+      margin-left: 2.5rem;
     }
   }
 }

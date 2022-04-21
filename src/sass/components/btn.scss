@@ -1,18 +1,35 @@
+@property --myColor1 {
+  syntax: '<color>';
+  initial-value: magenta;
+  inherits: false;
+}
+
+@property --myColor2 {
+  syntax: '<color>';
+  initial-value: green;
+  inherits: false;
+}
+
 .btn {
   display: flex;
   justify-content: center;
   align-items: center;
   
-  padding: 1rem .5rem;
-  min-width: 12em;
+  padding: 1rem 3.6rem 1.5rem;
+  // min-width: 30rem;
   border-radius: .65rem;
   border: none;
   
-  font-size: 2.2rem;
-  color: white;
-  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 1;
+  text-transform: lowercase;
 
-  transition: all 0.3s ease-out;
+  letter-spacing: 0.01em;
+
+  transition: all 100ms ease-in-out;
 
   &:disabled {
     opacity: .9;
@@ -26,12 +43,35 @@
   }
 
   &--active {
-    background-color: #f5c400;
-    color: black;
+    position: relative;
+    z-index: 0;
+
+    background: #FBB327;
+    box-shadow: .2rem .3rem 1rem rgba(241, 115, 26, 0.5);
+    border-radius: .2rem;
+
+    color: white;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top:  0;
+      width:  100%;
+      height: 100%;
+      background: linear-gradient(91.78deg, #FBB327 0%, #E26309 77.25%);
+
+      opacity: 0;
+
+      transition: opacity 100ms ease-in-out;
+    }
 
     &:hover,
     &:focus {
-      background-color: lighten(#f5c400, 10);
+      &::before {
+        opacity: 01;
+      }
     }
   }
 
@@ -39,6 +79,7 @@
     background-color: inherit;
     border: 0.1em solid white;
 
+    &:focus,
     &:hover {
       background-color: white;
       color: var(--secondary-color);
@@ -47,7 +88,8 @@
 
   &--reversed {
     background-color: inherit;
-    border: 0.1em solid white;
+    border: 0.1em solid currentColor;
+    color: white;
     
     &:hover {
       color: var(--secondary-color);
