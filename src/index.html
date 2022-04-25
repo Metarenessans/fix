@@ -7,6 +7,8 @@
   <meta name="theme-color" content="#fff">
   <title>Ремонт стиральных машин в Набережных Челнах</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="" type=" image/svg+xml">
+  <link rel="shortcut icon" href="icon.svg" type="image/svg">
 </head>
 <body>
   <main>
@@ -18,7 +20,7 @@
           в Набережных Челнах
         </h1>
         <div class="section1__buttons">
-          <button class="btn btn--active js-modal">Вызвать мастера</button>
+          <a class="btn btn--active" href="#section4">Вызвать мастера</ф>
           <a class="btn btn--price" href="#section2">Узнать цены</a>
         </div>
       </div>
@@ -107,7 +109,7 @@
         </div>
 
         <div class="section2__buttons">
-          <button class="btn btn--reversed js-modal">Вызвать мастера</button>
+          <a class="btn btn--reversed" href="#section4">Вызвать мастера</a>
         </div>
       </div>
     </section>
@@ -150,29 +152,42 @@
         </div>
       </div>
     </section>
-  </main>
 
-  <div id="modal" class="modal">
-    <form class="form" action="google-sheets.php" method="get">
-      <h2 class="form__title">Вызов мастера</h2>
-      <div class="form__inputs">
-        <input type="text" name="name" placeholder="Имя">
-        <label>
-          <span>Номер телефона *</span>
-          <input type="tel" required>
-        </label>
+    <section id="section4" class="section section4">
+      <div class="container">
+        <div class="section4__inner">
+          <h2 class="section__title section4__title">
+            Оставьте заявку<br>
+            и мы перезвоним вам
+          </h2>
+          <form class="form" action="google-sheets.php" method="get">
+            <div class="form__inputs">
+              <label>
+                <span class="visually-hidden">Имя</span>
+                <input type="text" name="name" placeholder="Имя" required>
+              </label>
+              <label>
+                <span class="visually-hidden">Номер телефона *</span>
+                <span class="tel-code">+7</span>
+                <input type="tel" name="tel" placeholder="(___) ___ ____" required>
+              </label>
+            </div>
+          
+            <button class="btn form__btn" type="submit">
+              Отправить
+            </button>
+          
+            <small class="form__agreement">
+              Нажимая на кнопку «Отправить», вы даете согласие<br>
+              на обработку своих персональных данных.
+            </small>
+          </form>
+        </div>
       </div>
-  
-      <button class="btn btn--active form__btn" type="submit">Отправить</button>
-  
-      <small class="form__agreement">
-        Нажимая на кнопку «Отправить», вы даете согласие<br>
-        на обработку своих персональных данных.
-      </small>
-    </form>
-  </div>
+    </section>
+
+  </main>
   
   <script src="js/index.js"></script>
-  <script src="lib/jquery/jquery.maskedinput.min.js"></script>
 </body>
 </html>

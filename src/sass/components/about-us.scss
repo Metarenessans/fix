@@ -1,7 +1,10 @@
 .about-us {
-  font-size: 1.8rem;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 3rem;
+
+  text-align: center;
+  font-size: 1.6rem;
 
   @include sm {
     font-size: 2.5rem;
@@ -9,10 +12,7 @@
     align-items: center;
     justify-content: center;
   }
-
-  padding: 2em 0;
   
-  text-align: center;
 
   &__item {
     display: flex;
@@ -34,11 +34,11 @@
       margin: 0;
       margin-bottom: .3em;
 
-      font-size: 1.25em;
+      font-size: 1.35em;
     }
     
     p {
-      font-size: 1.2em;
+      font-size: 1.1em;
     }
   }
 }

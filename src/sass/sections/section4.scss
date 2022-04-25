@@ -1,0 +1,13 @@
+.section4 {
+  background: #0c0b07 url(../img/form-bg.jpg) no-repeat 17rem -15rem / cover;
+
+  &__inner {
+    margin-left: 4rem;
+  }
+
+  &__title {
+    margin-bottom: 7rem;
+
+    text-align: left;
+  }
+}

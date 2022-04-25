@@ -1,28 +1,15 @@
-@property --myColor1 {
-  syntax: '<color>';
-  initial-value: magenta;
-  inherits: false;
-}
-
-@property --myColor2 {
-  syntax: '<color>';
-  initial-value: green;
-  inherits: false;
-}
-
 .btn {
   display: flex;
   justify-content: center;
   align-items: center;
   
   padding: 1rem 3.6rem 1.5rem;
-  // min-width: 30rem;
   border-radius: .65rem;
   border: none;
   
   font-family: "Montserrat", sans-serif;
   font-size: 2.4rem;
-  font-weight: 800;
+  font-weight: 600;
   font-style: normal;
   line-height: 1;
   text-transform: lowercase;
@@ -46,7 +33,7 @@
     position: relative;
     z-index: 0;
 
-    background: #FBB327;
+    background: #E26309;
     box-shadow: .2rem .3rem 1rem rgba(241, 115, 26, 0.5);
     border-radius: .2rem;
 
@@ -60,11 +47,14 @@
       top:  0;
       width:  100%;
       height: 100%;
-      background: linear-gradient(91.78deg, #FBB327 0%, #E26309 77.25%);
+      border-radius: inherit;
+      background: linear-gradient(91.78deg, #E26309 0%, #FBB327 77.25%);
 
       opacity: 0;
 
       transition: opacity 100ms ease-in-out;
+
+      @include no-select()
     }
 
     &:hover,
