@@ -10,6 +10,7 @@ const postcss = require('gulp-postcss');
 // JS
 
 const webpack = require('webpack-stream');
+const TerserPlugin = require('terser-webpack-plugin');
 const babel = require('gulp-babel');
 
 const sync = require('browser-sync');
@@ -46,6 +47,17 @@ const js = () =>
       entry: './src/js/index.js',
       output: {
         filename: 'index.js'
+      },
+      optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin({
+          terserOptions: {
+            format: {
+              comments: false
+            }
+          },
+          extractComments: false
+        })]
       }
     }))
     .pipe(gulp.dest('public/js'))
