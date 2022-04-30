@@ -23,13 +23,22 @@ $('a[href^="#"]').click(function (e) {
   scrollToElement($(this).attr('href'));
 });
 
+const $form = $('#form');
+
+$('a[href="#section4"').on('click', function(e) {
+  // Ставит фокус на первом интерактивном элементе
+  const focusable = $form.find('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  const firstFocusable = focusable[0];
+  firstFocusable.focus();
+});
+
 function resetForm() {
   const button = $('button[type="submit"]');
   button.text('Отправить');
   button.prop('disabled', '');
 }
 
-$('form').on('submit', e => {
+$form.on('submit', e => {
   e.preventDefault();
 
   // Валидация
