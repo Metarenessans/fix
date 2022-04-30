@@ -5,9 +5,9 @@ import 'wicg-inert';
 console.log('It works!');
 
 $('[type="tel"]')
-  .mask('(999) 999 9999')
+  .mask('+7 (999) 999 9999')
   .on('click', function () {
-    if (this.value === '(___) ___ ____') {
+    if (this.value === this.placeholder) {
       $(this).get(0).setSelectionRange(0, 0);
     }
   });
