@@ -67,6 +67,8 @@ const js = () =>
 
 const clean = () =>
   del([
+    'public/js/**',
+    'public/css/**',
     'public/lib/**',
     'public/img/**',
     'public/fonts/**'
