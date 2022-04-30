@@ -10,6 +10,17 @@ $('[type="tel"]')
     if (this.value === this.placeholder) {
       $(this).get(0).setSelectionRange(0, 0);
     }
+  })
+  .on('input', function(e) {
+    let { value } = e.target;
+    // Удаляет лишние символы
+    value = value.replace(/(\+7|\s+|[()-])/g, '');
+    // Стирает восьмерку в начале, если она есть
+    if (value.length > 10) {
+      value = value.slice(1);
+    }
+    console.log(value);
+    this.value = value; 
   });
 
 function scrollToElement(selector, callback) {
