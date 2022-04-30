@@ -3,6 +3,7 @@
   z-index: 0;
 
   background: url(../img/form-bg.jpg) no-repeat left -21rem / 120%;
+  background-image: -webkit-image-set(url(../img/form-bg.webp) 1x);
   background-color: #080705;
 
   @include sm {
