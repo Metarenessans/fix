@@ -29,7 +29,8 @@ const css = () =>
     .pipe(sass({ outputStyle: 'expanded' }))
     .pipe(postcss([
       require('postcss-custom-properties')(),
-      require('autoprefixer')()
+      require('autoprefixer')(),
+      require('cssnano')()
     ]))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/css'))
