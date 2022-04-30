@@ -84,6 +84,7 @@ $form.on('submit', e => {
     url: 'google-sheets.php',
     data,
     success: message => {
+      ym(88671537, 'reachGoal', 'form-send');
       console.log(message);
       $('button[type="submit"]')
         .text('Спасибо за заявку!')
