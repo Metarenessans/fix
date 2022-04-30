@@ -5,6 +5,11 @@
   background: url(../img/form-bg.jpg) no-repeat left -21rem / 120%;
   background-color: #080705;
 
+  @include sm {
+    background-size: cover;
+    background-position: -2em top;
+  }
+
   &::before {
     content: "";
     position: absolute;

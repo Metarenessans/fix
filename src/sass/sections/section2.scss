@@ -5,7 +5,7 @@
   padding: 10rem 5rem 15rem;
 
   @include sm {
-    padding: 10rem 2.1rem 15rem;
+    padding: 10rem 2.25rem;
   }
 
   &__buttons {
@@ -14,5 +14,9 @@
     align-items:     center;
 
     margin-top: 10rem;
+
+    @include sm {
+      margin-top: 6rem;
+    }
   }
 }

@@ -30,7 +30,11 @@ main {
     font-family: "Montserrat", sans-serif;
     font-size: 4rem;
     font-weight: 600;
-    line-height: 4rem;
+    line-height: 1;
+
+    @include sm {
+      font-size: 3.6rem;
+    }
   }
 }
 

@@ -75,6 +75,10 @@
       font-weight: 600;
       // line-height: 7rem;
 
+      @include sm {
+        font-size: 2.4rem;
+      }
+
       &.error {
         // border-color: red;
         // border-radius: .25em;
@@ -166,5 +170,9 @@
     font-size: 1.4rem;
     text-align: center;
     opacity: .6;
+
+    @include sm {
+      font-size: 1.6rem;
+    }
   }
 }

@@ -18,6 +18,10 @@
 
   transition: all 100ms ease-in-out;
 
+  @include sm {
+    font-size: 3rem;
+  }
+
   &:disabled {
     opacity: .9;
     background-color: aliceblue;
