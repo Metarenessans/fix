@@ -32,7 +32,7 @@ const css = () =>
       require('autoprefixer')(),
       require('cssnano')()
     ]))
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('public/css'))
     .pipe(sync.stream());
 
